@@ -1,4 +1,4 @@
-export default {
+{
     "children": [
         {
             "children": [
@@ -5964,4 +5964,4 @@ export default {
     "index": 0,
     "parentId": "0",
     "title": "Панель закладок"
-};
+}
