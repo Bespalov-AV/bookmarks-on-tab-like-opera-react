@@ -1,11 +1,55 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './BkContainer.css';
+
+import BkFolder from './BkFolder'
+import BkItem from './BkItem'
+
+export default ({ title, bkFolder }) => {
+    let renderComponent = []
+
+    if (!bkFolder.children) {
+        renderComponent.push(
+            <BkItem
+                //bkFolder={currentBk.children}
+                //currentBk={bkFolder}
+                title={title}
+            />)
+    } else {
+
+        for (const currentBk of bkFolder.children) {
+            if (!currentBk.children) {
+                renderComponent.push(
+                    <BkItem
+                        //bkFolder={currentBk.children}
+                        //currentBk={bkFolder}
+                        title={currentBk.title}
+                    />)
+            } else {
+                console.log(currentBk)
+                renderComponent.push(
+                    <BkFolder
+                        key={currentBk.id}
+                        //bkFolder={currentBk.children}
+                        currentBk={currentBk}
+                        title={currentBk.title}
+                    />
+                )
+            }
+        }
 
 
-export default class BkContainer extends Component {
 
-    render() {
-        return (
-            <p>!!!!!</p>
-        )
     }
+
+    return (
+        <div>
+            <div className="title">
+                {title}
+            </div>
+            <div className="bk-contener">
+                {renderComponent}
+            </div>
+        </div>
+    )
 }
+

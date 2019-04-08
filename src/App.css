@@ -23,3 +23,19 @@ body {
   font-family: sans-serif, Arial;
   background: var(--bg-body);
 }
+
+.flex-contener {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    /* border: 1px solid red; */
+}
+.contener {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+    width: 1400px;
+    min-height: 800px;
+    /* border: 1px solid blue; */
+}
