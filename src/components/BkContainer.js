@@ -11,11 +11,17 @@ export default class BkContainer extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { isOpenFolder: false }
+        this.state = {
+            isOpenFolder: false,
+            title: ""
+        }
     }
 
-    setOpenFolder = () => {
+    setOpenFolder = (title) => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
+        console.log('click Container' + title)
+        this.setState({ title: title })
+        this.props.setDoRander()
     }
 
     render() {
@@ -42,7 +48,6 @@ export default class BkContainer extends Component {
                             title={currentBk.title}
                         />)
                 } else {
-                    console.log(currentBk)
                     renderComponent.push(
                         <BkFolder
                             key={currentBk.id}
@@ -56,10 +61,10 @@ export default class BkContainer extends Component {
         }
 
         return (
-            <div>
+            <div className="contener-card">
                 <React.Fragment>
                     <div className="title"
-                        onClick={this.setOpenFolder}
+                        onClick={() => this.setOpenFolder(title)}
                     >
                         {title}
 
@@ -69,7 +74,7 @@ export default class BkContainer extends Component {
                     </div>
                 </React.Fragment>
 
-                {this.state.isOpenFolder &&
+                {this.state.isOpenFolder && title === this.state.title &&
                     <BkOpenFolder
                         bkFolder={bkFolder}
                         title={title}

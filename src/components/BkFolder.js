@@ -13,6 +13,7 @@ export default class BkFolder extends Component {
 
     setOpenFolder = () => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
+        console.log('click BkFolder')
     }
 
     render() {

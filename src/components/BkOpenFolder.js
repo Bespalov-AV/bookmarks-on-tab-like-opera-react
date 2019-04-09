@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './BkContainer.css';
+import './BkOpenFolder.css';
 
 import BkFolder from './BkFolder'
 import BkItem from './BkItem'
@@ -8,6 +8,13 @@ export default class BkOpenFolder extends Component {
     constructor(props) {
         super(props)
 
+        this.state = { isOpenFolder: false }
+    }
+
+    setOpenFolder = () => {
+        this.setState({ isOpenFolder: !this.state.isOpenFolder })
+        console.log('click BkOpenFolder')
+        this.props.setOpenFolder()
     }
 
     render() {
@@ -46,15 +53,20 @@ export default class BkOpenFolder extends Component {
         }
 
         return (
-            <div>
-                <div
-                    className="title"
-                //onClick={setOpenFolder}
-                >
-                    {title}
-                </div>
-                <div className="bk-open-folder">
-                    {renderComponent}
+            <div className="bk-open-container ">
+                <div>
+                    <div className="title-container">
+                        <div className="title"
+                            onClick={this.setOpenFolder}
+                        >
+                            {title}
+                        </div>
+                        <div className="btn-close">X</div>
+                    </div>
+
+                    <div className="bk-open-folder">
+                        {renderComponent}
+                    </div>
                 </div>
             </div>
         )

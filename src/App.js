@@ -6,7 +6,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      bookmarks: null
+      bookmarks: null,
+      openIndex: 0
     }
 
   }
@@ -15,11 +16,16 @@ class App extends Component {
     this.setState({ bookmarks: this.props.bk })
   }
 
+  setDoRander = () => {
+    this.setState({ doRander: true })
+    console.log('setDoRander')
+  }
+
   render() {
     if (!this.state.bookmarks) return ('Is Empty');
 
     const bookmarks = this.state.bookmarks.children
-    console.log(bookmarks)
+    //console.log(bookmarks)
 
     return (
       <div className="flex-contener">
@@ -29,6 +35,8 @@ class App extends Component {
               key={currentBk.id}
               bkFolder={currentBk}
               title={currentBk.title}
+              setDoRander={this.setDoRander}
+              doRander={this.state.doRander}
             />
           )
           )
