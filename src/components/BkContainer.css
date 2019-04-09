@@ -16,3 +16,16 @@
     width: 100%;
     text-align: center;
 }
+
+.bk-open-folder {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    /* height: var(--heght-bk); */
+    flex-direction: row;
+    border: 1px solid #888;
+    background: var(--bg-body);
+    border-radius: 5px;
+    z-index: 100;
+}
