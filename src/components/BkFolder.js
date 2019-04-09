@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './BkFolder.css';
 
+import BkOpenFolder from './BkOpenFolder'
 
-export default ({ title, currentBk }) => {
-    return (
-        <div
-            className="bk-folder"
-        >
-            {title}
-            {currentBk.url}
+export default class BkFolder extends Component {
+    constructor(props) {
+        super(props)
 
-        </div>
-    )
+        this.state = { isOpenFolder: false }
+    }
+
+
+    setOpenFolder = () => {
+        this.setState({ isOpenFolder: !this.state.isOpenFolder })
+    }
+
+    render() {
+        const { title, currentBk } = this.props
+        return (
+            <React.Fragment >
+                <div
+                    className="bk-folder"
+                    onClick={this.setOpenFolder}
+                >
+
+                    {title}
+
+                </div>
+
+                {this.state.isOpenFolder &&
+                    <BkOpenFolder
+                        bkFolder={currentBk}
+                        title={title}
+                        setOpenFolder={this.setOpenFolder}
+                    />
+                }
+            </React.Fragment >
+        )
+    }
 }

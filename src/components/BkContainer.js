@@ -57,28 +57,25 @@ export default class BkContainer extends Component {
 
         return (
             <div>
-                {!this.state.isOpenFolder ? (
-                    <React.Fragment>
-                        <div className="title"
-                            onClick={this.setOpenFolder}
-                        >
-                            {title}
+                <React.Fragment>
+                    <div className="title"
+                        onClick={this.setOpenFolder}
+                    >
+                        {title}
 
-                        </div>
-                        <div className="bk-contener">
-                            {renderComponent}
-                        </div>
-                    </React.Fragment>
+                    </div>
+                    <div className="bk-contener">
+                        {renderComponent}
+                    </div>
+                </React.Fragment>
 
-                ) : (
-                        <BkOpenFolder
-                            bkFolder={bkFolder}
-                            title={title}
-                            setOpenFolder={this.setOpenFolder}
-                        />
-                    )
+                {this.state.isOpenFolder &&
+                    <BkOpenFolder
+                        bkFolder={bkFolder}
+                        title={title}
+                        setOpenFolder={this.setOpenFolder}
+                    />
                 }
-
             </div>
         )
     }
