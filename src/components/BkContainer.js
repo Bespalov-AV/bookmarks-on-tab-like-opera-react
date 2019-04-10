@@ -5,6 +5,8 @@ import BkFolder from './BkFolder'
 import BkItem from './BkItem'
 import BkOpenFolder from './BkOpenFolder'
 
+//import OutsideClickHandler from '../OutsideClickHandler.jsx';
+
 
 
 export default class BkContainer extends Component {
@@ -61,8 +63,14 @@ export default class BkContainer extends Component {
                         onClick={() => this.setOpenFolder(this.props.bkFolder.id)}
                     >
                         {title}
-
                     </div>
+                    <OutsideClickHandler
+                        onOutsideClick={() => {
+                            alert('You clicked outside of this component!!!');
+                        }}
+                    >
+                        Hello World
+                        </OutsideClickHandler>
                     <div className="bk-contener">
                         {renderComponent}
                     </div>
