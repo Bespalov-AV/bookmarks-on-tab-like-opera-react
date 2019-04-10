@@ -64,13 +64,7 @@ export default class BkContainer extends Component {
                     >
                         {title}
                     </div>
-                    <OutsideClickHandler
-                        onOutsideClick={() => {
-                            alert('You clicked outside of this component!!!');
-                        }}
-                    >
-                        Hello World
-                        </OutsideClickHandler>
+
                     <div className="bk-contener">
                         {renderComponent}
                     </div>
