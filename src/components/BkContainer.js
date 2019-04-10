@@ -13,20 +13,22 @@ export default class BkContainer extends Component {
 
         this.state = {
             isOpenFolder: false,
-            title: ""
+            title: "",
+            idOpenFolder: this.props.idOpenFolder
         }
     }
 
-    setOpenFolder = (title) => {
+    setOpenFolder = (id) => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
-        console.log('click Container' + title)
-        this.setState({ title: title })
-        this.props.setDoRander()
+        console.log('click Container' + id)
+        //this.setState({ idOpenFolder: id })
+        this.props.setDoRander(id)
     }
 
     render() {
         const { title, bkFolder } = this.props
         let renderComponent = []
+        console.log('render ' + bkFolder.id)
 
         if (!bkFolder.children) {
             renderComponent.push(
@@ -64,7 +66,7 @@ export default class BkContainer extends Component {
             <div className="contener-card">
                 <React.Fragment>
                     <div className="title"
-                        onClick={() => this.setOpenFolder(title)}
+                        onClick={() => this.setOpenFolder(this.props.bkFolder.id)}
                     >
                         {title}
 
@@ -74,7 +76,7 @@ export default class BkContainer extends Component {
                     </div>
                 </React.Fragment>
 
-                {this.state.isOpenFolder && title === this.state.title &&
+                {this.state.isOpenFolder && bkFolder.id === this.props.idOpenFolder &&
                     <BkOpenFolder
                         bkFolder={bkFolder}
                         title={title}

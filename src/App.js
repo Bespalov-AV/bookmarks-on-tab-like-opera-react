@@ -7,7 +7,7 @@ class App extends Component {
     super()
     this.state = {
       bookmarks: null,
-      openIndex: 0
+      idOpenFolder: 0
     }
 
   }
@@ -16,9 +16,9 @@ class App extends Component {
     this.setState({ bookmarks: this.props.bk })
   }
 
-  setDoRander = () => {
-    this.setState({ doRander: true })
-    console.log('setDoRander')
+  setDoRander = (id) => {
+    this.setState({ idOpenFolder: id })
+    console.log('setDoRander ' + id)
   }
 
   render() {
@@ -36,7 +36,7 @@ class App extends Component {
               bkFolder={currentBk}
               title={currentBk.title}
               setDoRander={this.setDoRander}
-              doRander={this.state.doRander}
+              idOpenFolder={this.state.idOpenFolder}
             />
           )
           )
