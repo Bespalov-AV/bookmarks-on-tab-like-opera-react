@@ -11,9 +11,11 @@ export default class BkFolder extends Component {
     }
 
 
-    setOpenFolder = () => {
+    setOpenFolder = (id) => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
-        console.log('click BkFolder')
+        console.log('click BkFolder ' + id)
+
+        this.props.setDoRanderChildren(id)
     }
 
     render() {
@@ -22,7 +24,7 @@ export default class BkFolder extends Component {
             <React.Fragment >
                 <div
                     className="bk-folder"
-                    onClick={this.setOpenFolder}
+                    onClick={() => this.setOpenFolder(currentBk.id)}
                 >
 
                     {title}
@@ -34,6 +36,7 @@ export default class BkFolder extends Component {
                         bkFolder={currentBk}
                         title={title}
                         setOpenFolder={this.setOpenFolder}
+                        isOpenFolder={true}
                     />
                 }
             </React.Fragment >

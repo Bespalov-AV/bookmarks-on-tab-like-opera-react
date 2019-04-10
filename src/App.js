@@ -16,7 +16,7 @@ class App extends Component {
     this.setState({ bookmarks: this.props.bk })
   }
 
-  setDoRander = (id) => {
+  setDoRanderChildren = (id) => {
     this.setState({ idOpenFolder: id })
     console.log('setDoRander ' + id)
   }
@@ -35,7 +35,7 @@ class App extends Component {
               key={currentBk.id}
               bkFolder={currentBk}
               title={currentBk.title}
-              setDoRander={this.setDoRander}
+              setDoRanderChildren={this.setDoRanderChildren}
               idOpenFolder={this.state.idOpenFolder}
             />
           )

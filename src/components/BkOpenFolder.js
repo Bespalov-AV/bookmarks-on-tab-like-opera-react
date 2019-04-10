@@ -8,18 +8,31 @@ export default class BkOpenFolder extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { isOpenFolder: false }
+        this.state = {
+            isOpenFolder: this.props.isOpenFolder,
+            idOpenFolder: 0
+        }
     }
 
     setOpenFolder = () => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
         console.log('click BkOpenFolder')
-        this.props.setOpenFolder()
+        //this.props.setOpenFolder()
+    }
+    closeOpenFolder = () => {
+        this.setState({ isOpenFolder: false })
+    }
+
+    setDoRanderChildren = (id) => {
+        this.setState({ idOpenFolder: id })
+        console.log('BkOpenFolder ' + id)
     }
 
     render() {
-        const { title, bkFolder, setOpenFolder } = this.props
+        const { title, bkFolder } = this.props
         let renderComponent = []
+
+        if (!this.state.isOpenFolder) return null;
 
         if (!bkFolder.children) {
             renderComponent.push(
@@ -46,6 +59,8 @@ export default class BkOpenFolder extends Component {
                             //bkFolder={currentBk.children}
                             currentBk={currentBk}
                             title={currentBk.title}
+                            setDoRanderChildren={this.setDoRanderChildren}
+                            idOpenFolder={this.state.idOpenFolder}
                         />
                     )
                 }
@@ -61,7 +76,11 @@ export default class BkOpenFolder extends Component {
                         >
                             {title}
                         </div>
-                        <div className="btn-close">X</div>
+                        <div className="btn-close"
+                            onClick={this.closeOpenFolder}
+                        >
+                            X
+                        </div>
                     </div>
 
                     <div className="bk-open-folder">

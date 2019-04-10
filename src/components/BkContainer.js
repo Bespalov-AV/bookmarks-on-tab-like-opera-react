@@ -5,23 +5,25 @@ import BkFolder from './BkFolder'
 import BkItem from './BkItem'
 import BkOpenFolder from './BkOpenFolder'
 
-//import OutsideClickHandler from '../OutsideClickHandler.jsx';
-
-
-
 export default class BkContainer extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            isOpenFolder: false
+            isOpenFolder: false,
+            idOpenFolder: 0
         }
     }
 
     setOpenFolder = (id) => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
         console.log('click Container' + id)
-        this.props.setDoRander(id)
+        this.props.setDoRanderChildren(id)
+    }
+
+    setDoRanderChildren = (id) => {
+        this.setState({ idOpenFolder: id })
+        console.log('setDoRanderChildren container ' + id)
     }
 
     render() {
@@ -43,6 +45,8 @@ export default class BkContainer extends Component {
                     renderComponent.push(
                         <BkItem
                             title={currentBk.title}
+                            setDoRanderChildren={this.setDoRanderChildren}
+                            idOpenFolder={this.state.idOpenFolder}
                         />)
                 } else {
                     renderComponent.push(
@@ -50,6 +54,8 @@ export default class BkContainer extends Component {
                             key={currentBk.id}
                             currentBk={currentBk}
                             title={currentBk.title}
+                            setDoRanderChildren={this.setDoRanderChildren}
+                            idOpenFolder={this.state.idOpenFolder}
                         />
                     )
                 }
@@ -75,6 +81,7 @@ export default class BkContainer extends Component {
                         bkFolder={bkFolder}
                         title={title}
                         setOpenFolder={this.setOpenFolder}
+                        isOpenFolder={true}
                     />
                 }
             </div>
