@@ -18,7 +18,7 @@ export default class BkContainer extends Component {
     setOpenFolder = (id) => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
         console.log('click Container' + id)
-        this.props.setDoRanderChildren(id)
+        //this.props.setDoRanderChildren(id)
     }
 
     setDoRanderChildren = (id) => {
@@ -45,8 +45,9 @@ export default class BkContainer extends Component {
                     renderComponent.push(
                         <BkItem
                             title={currentBk.title}
-                            setDoRanderChildren={this.setDoRanderChildren}
-                            idOpenFolder={this.state.idOpenFolder}
+                            currentBk={currentBk}
+                        //setDoRanderChildren={this.setDoRanderChildren}
+                        //idOpenFolder={this.state.idOpenFolder}
                         />)
                 } else {
                     renderComponent.push(
@@ -54,8 +55,8 @@ export default class BkContainer extends Component {
                             key={currentBk.id}
                             currentBk={currentBk}
                             title={currentBk.title}
-                            setDoRanderChildren={this.setDoRanderChildren}
-                            idOpenFolder={this.state.idOpenFolder}
+                        // setDoRanderChildren={this.setDoRanderChildren}
+                        // idOpenFolder={this.state.idOpenFolder}
                         />
                     )
                 }
@@ -76,7 +77,7 @@ export default class BkContainer extends Component {
                     </div>
                 </React.Fragment>
 
-                {this.state.isOpenFolder && bkFolder.id === this.props.idOpenFolder &&
+                {this.state.isOpenFolder &&
                     <BkOpenFolder
                         bkFolder={bkFolder}
                         title={title}

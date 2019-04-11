@@ -35,8 +35,8 @@ class App extends Component {
               key={currentBk.id}
               bkFolder={currentBk}
               title={currentBk.title}
-              setDoRanderChildren={this.setDoRanderChildren}
-              idOpenFolder={this.state.idOpenFolder}
+            // setDoRanderChildren={this.setDoRanderChildren}
+            // idOpenFolder={this.state.idOpenFolder}
             />
           )
           )

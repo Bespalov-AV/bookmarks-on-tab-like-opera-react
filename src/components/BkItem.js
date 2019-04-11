@@ -7,12 +7,19 @@ const getClassColor = () => {
     return className
 }
 
+const actionClickBk = (url, evt) => {
+    evt.preventDefault();
+    //window.open(url).focus();
+    window.open(url, "_self");
+}
+
 export default ({ title, currentBk }) => {
     const style = getClassColor()
     return (
         <div
             className="bk-item"
             style={style}
+            onClick={(evt) => actionClickBk(currentBk.url, evt)}
         >
             {title}
 

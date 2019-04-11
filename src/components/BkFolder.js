@@ -15,7 +15,7 @@ export default class BkFolder extends Component {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
         console.log('click BkFolder ' + id)
 
-        this.props.setDoRanderChildren(id)
+        //this.props.setDoRanderChildren(id)
     }
 
     render() {

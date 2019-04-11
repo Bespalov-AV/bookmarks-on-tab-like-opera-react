@@ -49,7 +49,7 @@ export default class BkOpenFolder extends Component {
                     renderComponent.push(
                         <BkItem
                             //bkFolder={currentBk.children}
-                            //currentBk={bkFolder}
+                            currentBk={currentBk}
                             title={currentBk.title}
                         />)
                 } else {
@@ -59,8 +59,8 @@ export default class BkOpenFolder extends Component {
                             //bkFolder={currentBk.children}
                             currentBk={currentBk}
                             title={currentBk.title}
-                            setDoRanderChildren={this.setDoRanderChildren}
-                            idOpenFolder={this.state.idOpenFolder}
+                        // setDoRanderChildren={this.setDoRanderChildren}
+                        // idOpenFolder={this.state.idOpenFolder}
                         />
                     )
                 }
