@@ -10,6 +10,7 @@ export default class BkOpenFolder extends Component {
 
         this.state = {
             isOpenFolder: this.props.isOpenFolder,
+            //isOpenFolder: false,
             idOpenFolder: 0
         }
     }
