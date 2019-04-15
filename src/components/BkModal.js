@@ -85,25 +85,15 @@ export default class BkOpenFolder extends Component {
                 animation={true}
             >
                 <Modal.Header closeButton>
+                    {title}
                 </Modal.Header>
                 <Modal.Body>
                     <div >
-                        <div>
-                            <div className="title"
-                                onClick={this.setOpenFolder}
-                            >
-                                {title}
-                            </div>
-                        </div>
-
                         <div className="bk-open-folder">
                             {renderComponent}
                         </div>
                     </div>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={this.closeOpenFolder}>Close</Button>
-                </Modal.Footer>
             </Modal>
         )
     }
