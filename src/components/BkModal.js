@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
-
 
 import './BkModal.css';
 
@@ -15,24 +13,16 @@ export default class BkOpenFolder extends Component {
 
         this.state = {
             isOpenFolder: this.props.isOpenFolder,
-            //isOpenFolder: false,
-            idOpenFolder: 0
         }
     }
 
     setOpenFolder = () => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
-        console.log('click BkOpenFolder')
         this.props.setOpenFolder()
     }
     closeOpenFolder = () => {
         this.setState({ isOpenFolder: false })
         this.props.setOpenFolder()
-    }
-
-    setDoRanderChildren = (id) => {
-        this.setState({ idOpenFolder: id })
-        console.log('BkOpenFolder ' + id)
     }
 
     render() {
@@ -44,8 +34,6 @@ export default class BkOpenFolder extends Component {
         if (!bkFolder.children) {
             renderComponent.push(
                 <BkItem
-                    //bkFolder={currentBk.children}
-                    //currentBk={bkFolder}
                     title={title}
                 />)
         } else {
@@ -55,7 +43,6 @@ export default class BkOpenFolder extends Component {
                 if (!currentBk.children) {
                     renderComponent.push(
                         <BkItem
-                            //bkFolder={currentBk.children}
                             key={currentBk.id}
                             currentBk={currentBk}
                             title={currentBk.title}
@@ -64,11 +51,8 @@ export default class BkOpenFolder extends Component {
                     renderComponent.push(
                         <BkFolder
                             key={currentBk.id}
-                            //bkFolder={currentBk.children}
                             currentBk={currentBk}
                             title={currentBk.title}
-                        // setDoRanderChildren={this.setDoRanderChildren}
-                        // idOpenFolder={this.state.idOpenFolder}
                         />
                     )
                 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './BkFolder.css';
 
-//import BkOpenFolder from './BkOpenFolder'
 import BkModal from './BkModal'
 
 export default class BkFolder extends Component {
@@ -9,17 +8,13 @@ export default class BkFolder extends Component {
         super(props)
 
         this.state = {
-            isOpenFolder: false,
-            // isModal: true
+            isOpenFolder: false
         }
     }
 
 
     setOpenFolder = (id) => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
-        console.log('click BkFolder ' + this.state.isOpenFolder)
-
-        //this.props.setDoRanderChildren(id)
     }
 
     render() {
@@ -41,15 +36,6 @@ export default class BkFolder extends Component {
 
                 </div>
 
-                {/* {this.state.isOpenFolder && !this.state.isModal &&
-                    <BkOpenFolder
-                        bkFolder={currentBk}
-                        title={title}
-                        setOpenFolder={this.setOpenFolder}
-                        isOpenFolder={true}
-                    />
-                } */}
-
                 {this.state.isOpenFolder &&
                     <BkModal
                         bkFolder={currentBk}
@@ -58,7 +44,6 @@ export default class BkFolder extends Component {
                         isOpenFolder={this.state.isOpenFolder}
                     />
                 }
-
             </React.Fragment >
         )
     }

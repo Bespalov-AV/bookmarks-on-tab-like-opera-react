@@ -6,19 +6,13 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      bookmarks: null,
-      idOpenFolder: 0
+      bookmarks: null
     }
 
   }
 
   componentDidMount = () => {
     this.setState({ bookmarks: this.props.bk })
-  }
-
-  setDoRanderChildren = (id) => {
-    this.setState({ idOpenFolder: id })
-    console.log('setDoRander ' + id)
   }
 
   render() {
@@ -28,15 +22,13 @@ class App extends Component {
     //console.log(bookmarks)
 
     return (
-      <div className="flex-contener">
-        <div className="contener">
+      <div className="bk-flex-contener">
+        <div className="bk-main-contener">
           {bookmarks.map((currentBk) => (
             <BkContainer
               key={currentBk.id}
               bkFolder={currentBk}
               title={currentBk.title}
-            // setDoRanderChildren={this.setDoRanderChildren}
-            // idOpenFolder={this.state.idOpenFolder}
             />
           )
           )

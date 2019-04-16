@@ -17,20 +17,20 @@
 
   --bg-body: cornflowerblue;
 }
-body {
+.bk-body {
   font-weight: 400px;
   font-size: 14px;
   font-family: sans-serif, Arial;
   background: var(--bg-body);
 }
 
-.flex-contener {
+.bk-flex-contener {
     display: flex;
     justify-content: center;
     justify-items: center;
     /* border: 1px solid red; */
 }
-.contener {
+.bk-main-contener {
     display: flex;
     flex-direction: row;
     justify-content: start;

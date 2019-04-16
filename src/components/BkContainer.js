@@ -12,21 +12,13 @@ export default class BkContainer extends Component {
 
         this.state = {
             isOpenFolder: false,
-            idOpenFolder: 0,
-            isModal: true
-
+            idOpenFolder: 0
         }
     }
 
     setOpenFolder = (id) => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
         console.log('click Container' + id)
-        //this.props.setDoRanderChildren(id)
-    }
-
-    setDoRanderChildren = (id) => {
-        this.setState({ idOpenFolder: id })
-        console.log('setDoRanderChildren container ' + id)
     }
 
     render() {
@@ -49,8 +41,6 @@ export default class BkContainer extends Component {
                         <BkItem
                             title={currentBk.title}
                             currentBk={currentBk}
-                        //setDoRanderChildren={this.setDoRanderChildren}
-                        //idOpenFolder={this.state.idOpenFolder}
                         />)
                 } else {
                     renderComponent.push(
@@ -58,8 +48,6 @@ export default class BkContainer extends Component {
                             key={currentBk.id}
                             currentBk={currentBk}
                             title={currentBk.title}
-                        // setDoRanderChildren={this.setDoRanderChildren}
-                        // idOpenFolder={this.state.idOpenFolder}
                         />
                     )
                 }
