@@ -3,7 +3,6 @@ import './BkContainer.css';
 
 import BkFolder from './BkFolder'
 import BkItem from './BkItem'
-import BkOpenFolder from './BkOpenFolder'
 
 import BkModal from './BkModal'
 
@@ -82,20 +81,12 @@ export default class BkContainer extends Component {
                 </React.Fragment>
 
                 {this.state.isOpenFolder &&
-                    // <BkOpenFolder
-                    //     bkFolder={bkFolder}
-                    //     title={title}
-                    //     setOpenFolder={this.setOpenFolder}
-                    //     isOpenFolder={true}
-                    // />
-
                     <BkModal
-                    // bkFolder={currentBk}
-                    // title={title}
-                    // setOpenFolder={this.setOpenFolder}
-                    // isOpenFolder={true}
+                        bkFolder={bkFolder}
+                        title={title}
+                        setOpenFolder={this.setOpenFolder}
+                        isOpenFolder={this.state.isOpenFolder}
                     />
-
                 }
             </div>
         )
