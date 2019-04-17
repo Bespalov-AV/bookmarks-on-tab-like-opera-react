@@ -71,7 +71,9 @@ export default class BkOpenFolder extends Component {
                 <Modal.Header closeButton>
                     {title}
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body
+                    style={{ background: "rgb(95, 110, 211)" }}
+                >
                     <div >
                         <div className="bk-open-folder">
                             {renderComponent}
