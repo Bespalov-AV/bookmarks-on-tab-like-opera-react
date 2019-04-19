@@ -7,13 +7,15 @@ export default class BkFolder extends Component {
     constructor(props) {
         super(props)
 
+        this.setOpenFolder = this.setOpenFolder.bind(this)
+
         this.state = {
             isOpenFolder: false
         }
     }
 
 
-    setOpenFolder = (id) => {
+    setOpenFolder = () => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
     }
 
@@ -29,7 +31,7 @@ export default class BkFolder extends Component {
                 />
                 <div
                     className="bk-folder"
-                    onClick={() => this.setOpenFolder(currentBk.id)}
+                    onClick={this.setOpenFolder}
                 >
 
                     {title}
