@@ -7,20 +7,23 @@ export default class BkFolder extends Component {
     constructor(props) {
         super(props)
 
+        this.setOpenFolder = this.setOpenFolder.bind(this)
+
         this.state = {
             isOpenFolder: false
         }
     }
 
-
-    setOpenFolder = (id) => {
+    setOpenFolder = () => {
         this.setState({ isOpenFolder: !this.state.isOpenFolder })
+        console.log(this.state.isOpenFolder)
     }
 
     render() {
-        const { title, currentBk } = this.props
+        const { title, currentBk, style } = this.props
+
         return (
-            <React.Fragment >
+            <React.Fragment>
                 <link
                     rel="stylesheet"
                     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -29,11 +32,10 @@ export default class BkFolder extends Component {
                 />
                 <div
                     className="bk-folder"
-                    onClick={() => this.setOpenFolder(currentBk.id)}
+                    style={style}
+                    onClick={this.setOpenFolder.bind(this)}
                 >
-
                     {title}
-
                 </div>
 
                 {this.state.isOpenFolder &&

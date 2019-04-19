@@ -14,23 +14,29 @@ export default class BkItem extends React.PureComponent {
         return className
     }
 
+    cutTitle(title) {
+        return title.substring(0, 40)
+    }
+
     actionClickBk(url, evt) {
         evt.preventDefault();
-        //window.open(url).focus();
-        window.open(url, "_self");
+        window.open(url).focus();
+        //window.open(url, "_self");
     }
 
     render() {
-        const { currentBk, title } = this.props
-        const style = this.getClassColor()
+        const { currentBk, title, isModal, style } = this.props
+
+        let styleColor = this.getClassColor()
+        Object.assign(styleColor, style) 
 
         return (
             <div
                 className="bk-item"
-                style={style}
+                style={styleColor}
                 onClick={(evt) => this.actionClickBk(currentBk.url, evt)}
             >
-                {title}
+                {this.cutTitle(title)}
             </div>
         )
     }

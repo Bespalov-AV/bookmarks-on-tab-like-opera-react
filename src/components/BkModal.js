@@ -26,10 +26,10 @@ export default class BkOpenFolder extends Component {
     }
 
     render() {
-        const { title, bkFolder } = this.props
+        const { title, bkFolder, isOpenFolder } = this.props
         let renderComponent = []
 
-        if (!this.state.isOpenFolder) return null;
+        //if (!this.state.isOpenFolder) return null;
 
         if (!bkFolder.children) {
             renderComponent.push(
@@ -37,6 +37,12 @@ export default class BkOpenFolder extends Component {
                     title={title}
                 />)
         } else {
+            let style = {}
+            if (isOpenFolder) {
+                style.width = '120px'
+                style.height = '90px'
+                style.fontSize = '14px'
+            }
 
             for (const currentBk of bkFolder.children) {
 
@@ -46,6 +52,8 @@ export default class BkOpenFolder extends Component {
                             key={currentBk.id}
                             currentBk={currentBk}
                             title={currentBk.title}
+                            style={style}
+                            isModal={true}
                         />)
                 } else {
                     renderComponent.push(
@@ -53,6 +61,8 @@ export default class BkOpenFolder extends Component {
                             key={currentBk.id}
                             currentBk={currentBk}
                             title={currentBk.title}
+                            style={style}
+                            isModal={true}
                         />
                     )
                 }
@@ -71,9 +81,7 @@ export default class BkOpenFolder extends Component {
                 <Modal.Header closeButton>
                     {title}
                 </Modal.Header>
-                <Modal.Body
-                    style={{ background: "rgb(95, 110, 211)" }}
-                >
+                <Modal.Body>
                     <div >
                         <div className="bk-open-folder">
                             {renderComponent}

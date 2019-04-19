@@ -30,6 +30,7 @@ export default class BkContainer extends Component {
             renderComponent.push(
                 <BkItem
                     title={title}
+                    isModal={false}
                 />)
         } else {
 
@@ -41,6 +42,7 @@ export default class BkContainer extends Component {
                         <BkItem
                             title={currentBk.title}
                             currentBk={currentBk}
+                            isModal={false}
                         />)
                 } else {
                     renderComponent.push(
