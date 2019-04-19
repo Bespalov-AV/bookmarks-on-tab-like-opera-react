@@ -1,29 +1,37 @@
 import React from 'react';
 import './BkItem.css';
 
-const getClassColor = () => {
-    const colorInd = Math.round(Math.random() * 10)
-    const className = { backgroundColor: `var(--bg-color${colorInd})` }
-    return className
-}
+export default class BkItem extends React.PureComponent {
+    constructor(props) {
+        super(props)
 
-const actionClickBk = (url, evt) => {
-    evt.preventDefault();
-    //window.open(url).focus();
-    window.open(url, "_self");
-}
+        this.actionClickBk = this.actionClickBk.bind(this)
+    }
 
-export default ({ title, currentBk }) => {
-    const style = getClassColor()
-    return (
-        <div
-            className="bk-item"
-            style={style}
-            onClick={(evt) => actionClickBk(currentBk.url, evt)}
-        >
-            {title}
+    getClassColor() {
+        const colorInd = Math.round(Math.random() * 10)
+        const className = { backgroundColor: `var(--bg-color${colorInd})` }
+        return className
+    }
 
+    actionClickBk(url, evt) {
+        evt.preventDefault();
+        //window.open(url).focus();
+        window.open(url, "_self");
+    }
 
-        </div>
-    )
+    render() {
+        const { currentBk, title } = this.props
+        const style = this.getClassColor()
+
+        return (
+            <div
+                className="bk-item"
+                style={style}
+                onClick={(evt) => this.actionClickBk(currentBk.url, evt)}
+            >
+                {title}
+            </div>
+        )
+    }
 }
