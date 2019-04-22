@@ -14,6 +14,17 @@ export default class BkItem extends React.PureComponent {
         return className
     }
 
+    getClassColorFromId(currentBk) {
+        if (currentBk) {
+            const colorInd = currentBk.id.substr(-1)
+            const className = { backgroundColor: `var(--bg-color${colorInd})` }
+            return className
+        } else {
+            const className = { backgroundColor: `var(--bg-color0)` }
+            return className
+        }
+    }
+
     cutTitle(title) {
         return title.substring(0, 40)
     }
@@ -25,15 +36,14 @@ export default class BkItem extends React.PureComponent {
     }
 
     render() {
-        const { currentBk, title, isModal, style } = this.props
-
-        let styleColor = this.getClassColor()
-        Object.assign(styleColor, style) 
+        const { currentBk, title } = this.props
+        //const style = this.getClassColor()
+        const style = this.getClassColorFromId(currentBk)
 
         return (
             <div
                 className="bk-item"
-                style={styleColor}
+                style={style}
                 onClick={(evt) => this.actionClickBk(currentBk.url, evt)}
             >
                 {this.cutTitle(title)}
